@@ -1,8 +1,9 @@
 FROM php:7.4-apache
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends git zlib1g-dev libzip-dev zip unzip libpng-dev wget
+    && apt-get install -y --no-install-recommends git wget zlib1g-dev libzip-dev zip unzip libpng-dev libjpeg-dev libwebp-dev libfreetype6-dev
 
+RUN docker-php-ext-configure gd --with-jpeg --with-freetype --with-webp
 RUN docker-php-ext-install pdo_mysql zip gd opcache
 RUN echo 'memory_limit = 2048M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini;
 
