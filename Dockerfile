@@ -8,6 +8,7 @@ RUN docker-php-ext-install pdo_mysql zip gd opcache
 RUN echo 'memory_limit = 2048M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini;
 RUN echo 'upload_max_filesize = 40M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini;
 RUN echo 'post_max_size = 40M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini;
+RUN echo 'max_file_uploads = 100' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini;
 
 RUN a2enmod rewrite headers
 
